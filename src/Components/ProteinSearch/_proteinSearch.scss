@@ -1,0 +1,27 @@
+.proteinSearchPage {
+  margin-top: 30px;
+}
+
+.checkbox-list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-height: 500px;
+  width: 0;
+  overflow: auto;
+  overflow-x: hidden;
+  height: 0;
+  margin: auto;
+  transition:
+          height $animation-time ease-out,
+          width $delay-time ease-out $delay-time;
+
+  &.open {
+    height: 400px;
+    width: 250px;
+    transition:
+            height $animation-time ease-out $block-list-delay,
+            width $delay-time ease-out $block-list-delay
+
+  }
+}

@@ -1,0 +1,79 @@
+$search-time: 800ms;
+$reset-time: 150ms;
+
+.search-box {
+  border: solid 5px black;
+  display: inline-block;
+  position: relative;
+  border-radius: 50px;
+  &__input {
+    font-family: Raleway, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    width: 50px;
+    height: 50px;
+    padding: 5px 40px 5px 10px;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 50px;
+    transition: width $animation-time cubic-bezier(0.68, -0.55, 0.27, 1.55) $delay-time;
+    cursor: pointer;
+    &:focus {
+      outline: none;
+      cursor: text;
+    }
+    &.open, &:not(:placeholder-shown) {
+      width: 300px;
+      transition: width $animation-time cubic-bezier(0.68, -0.55, 0.27, 1.55);
+      +.clear-button {
+        bottom: 13px;
+        right: 10px;
+        transition:
+                bottom $delay-time ease-out $animation-time
+                , right $delay-time ease-out $animation-time;
+      }
+      +.clear-button:after {
+        top: 0;
+        right: 10px;
+        opacity: 1;
+        transition:
+                top $delay-time ease-out $block-list-delay
+                , right $delay-time ease-out $block-list-delay
+                , opacity $delay-time ease $block-list-delay;
+      }
+    }
+  }
+  .clear-button {
+    cursor: pointer;
+    background-color: transparent;
+    width: 25px;
+    height: 25px;
+    border: 0;
+    padding: 0;
+    outline: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    bottom: -13px;
+    right: -15px;
+    transition: bottom $delay-time ease-out $delay-time, right $delay-time ease-out $delay-time;
+    &:before, &:after {
+      content: "";
+      height: 25px;
+      border-left: solid 5px black;
+      position: absolute;
+      transform: rotate(-45deg);
+    }
+    &:after {
+      transform: rotate(45deg);
+      opacity: 0;
+      top: -20px;
+      right: -10px;
+      transition:
+              top $delay-time ease-out
+              , right $delay-time ease-out
+              , opacity $delay-time ease-out;
+    }
+  }
+}
