@@ -10,7 +10,7 @@ export default function (request, changeValue) {
         if (changeValue !== ""){
             setLoading(true)
             request()
-                .then(response => setData(response.data))
+                .then(response => setData(response))
                 .catch(error => setError(error))
                 .finally(() => setLoading(false))
         }
